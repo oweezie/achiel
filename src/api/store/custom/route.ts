@@ -1,5 +1,6 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http";
 import { HttpTypes } from "@medusajs/types";
+import logger from "../../../util/logger";
 
 /**
  * GET handler for store custom route
@@ -107,8 +108,7 @@ export async function POST(
       });
     }
     
-    // Here you would typically store the feedback in your database
-    // For now, we'll just acknowledge receipt
+    logger.info("Feedback received", { email, feedback, rating });
     
     return res.status(201).json({
       message: "Feedback received successfully",
@@ -122,7 +122,7 @@ export async function POST(
       }
     });
   } catch (error) {
-    console.error("Error processing feedback:", error);
+    logger.error("Error processing feedback", { error: error.toString() });
     return res.status(500).json({
       message: "An error occurred while processing your feedback",
       status: 500,
