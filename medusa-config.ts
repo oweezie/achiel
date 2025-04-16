@@ -14,17 +14,17 @@ module.exports = defineConfig({
     }
   },
   modules: {
-    workflows: false //{
+    workflows:{
       // Using the provided PostgreSQL connection string for workflows
       //clientUrl: process.env.DATABASE_URL,
       // Alternatively, you may use dbName from the environment if preferred:
       // dbName: process.env.DB_NAME,
 
       // Optional: If utilizing a Redis workflow engine, configure as below
-      // redis: {
+      // redis:   {
       //   url: process.env.REDIS_URL,
       //   queueName: "workflow_queue"
       // }
-   // }
+    }
   }
 })
